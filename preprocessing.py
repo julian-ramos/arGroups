@@ -11,7 +11,7 @@ import pickle
 import dataML_Prepro as funsPre
 import dataML_Big as funsBig
 
-
+#Need to change the paths so that they work both in the laptop and desktop
 data_path='D:/Kaggle/loan default prediction/'
 trainFile = 'D:/Kaggle/loan default prediction/train_v2.csv'
 cleanTrainFile='D:/Kaggle/loan default prediction/train_v2noNA.csv'
