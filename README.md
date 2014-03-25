@@ -1,0 +1,4 @@
+arGroups
+========
+
+Activity recognition project
