@@ -12,22 +12,38 @@ import dataML_Prepro as funsPre
 import dataML_Big as funsBig
 
 #Need to change the paths so that they work both in the laptop and desktop
-data_path='D:/Kaggle/loan default prediction/'
-trainFile = 'D:/Kaggle/loan default prediction/train_v2.csv'
-cleanTrainFile='D:/Kaggle/loan default prediction/train_v2noNA.csv'
-testFile='D:/Kaggle/loan default prediction/test_v2.csv'
-filename='D:/Kaggle/loan default prediction/test.csv'
-tempPath='D:/Kaggle/loan default prediction/temp_em/'
-createCV=True
-categorical_vars=['f776','f777','f778']
-labels='loss'
 
-# According to this the best clustering unsurprisingly is simply k=2
-# funs.missingEM(trainFile,data_path,10,categorical_vars,labels,kfolds=2)
-#Missing data was already stored simply use the new data files
-#Don't forget that I still need to change the categorical variables into dummies for the regression
+if os.getenv('COMPUTERNAME')=='JULIAN':
+    data_path='G:\Activity_RS\Last data set\FeatureDataset/'
+    #This is the file were all of the data is summarized
+    trainFile = 'D:/Kaggle/loan default prediction/train_v2.csv'
+    #This is the file without NAs
+    cleanTrainFile='D:/Kaggle/loan default prediction/train_v2noNA.csv'
+    #Testing file
+    testFile='D:/Kaggle/loan default prediction/test_v2.csv'
+    createCV=True
+else:
+    data_path='D:/Kaggle/loan default prediction/'
+    trainFile = 'D:/Kaggle/loan default prediction/train_v2.csv'
+    cleanTrainFile='D:/Kaggle/loan default prediction/train_v2noNA.csv'
+    testFile='D:/Kaggle/loan default prediction/test_v2.csv'
+    createCV=True
+    
+    
+    
+#First I have to try feature selection and with 
+#a subset of the features I can then go to the next step
+#However, this feature selection is for all of the population
+    
+    
+#Here is the way I have to make this code
+#Run kmeans for each individual data file
+#get the centroids
+#cluster the centroids
+#Once that is done try to comeup with a way to 
+#to do the grouping of people    
 
-# meanSils=pickle.load(open(data_path+'/'+'meanSils','rb'))
+
 
 if createCV==True:
     training_files,testing_files=funsPre.crossvalidationSPF(cleanTrainFile,data_path,4)
